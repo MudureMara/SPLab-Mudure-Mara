@@ -1,14 +1,22 @@
+import java.util.concurrent.TimeUnit;
+
 public class Image implements Element {
 
-    private String url;
+    private String imageName;
 
-    public Image(String url) {
-        this.url = url;
+    public Image(String name) {
+        imageName = name;
+
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void print() {
-        System.out.println("Image: " + url);
+        System.out.println("Image: " + imageName);
     }
 
     @Override

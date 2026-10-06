@@ -1,32 +1,46 @@
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        Book book = new Book();
+        long startTime = System.currentTimeMillis();
 
-        Author author1 = new Author("Ion", "Popescu");
-        Author author2 = new Author("Maria", "Ionescu");
+        ImageProxy img1 = new ImageProxy("Pamela Anderson");
+        ImageProxy img2 = new ImageProxy("Kim Kardashian");
+        ImageProxy img3 = new ImageProxy("Kirby Griffin");
 
-        book.addAuthor(author1);
-        book.addAuthor(author2);
+        Section playboyS1 = new Section("Front Cover");
+        playboyS1.add(img1);
 
-        Section chapter1 = new Section("Capitolul 1");
+        Section playboyS2 = new Section("Summer Girls");
+        playboyS2.add(img2);
+        playboyS2.add(img3);
 
-        Paragraph p1 = new Paragraph("Paragraph 1");
-        Paragraph p2 = new Paragraph("Paragraph 2");
-        Paragraph p3 = new Paragraph("Paragraph 3");
+        Book playboy = new Book("Playboy");
 
-        chapter1.add(p1);
-        chapter1.add(p2);
-        chapter1.add(p3);
+        playboy.addContent(playboyS1);
+        playboy.addContent(playboyS2);
 
-        Image image = new Image("image.jpg");
-        Table table = new Table("Table 1");
+        long endTime = System.currentTimeMillis();
 
-        book.addElement(chapter1);
-        book.addElement(image);
-        book.addElement(table);
+        System.out.println("Creation of the content took "
+                + (endTime - startTime) + " milliseconds");
 
-        book.print();
+        startTime = System.currentTimeMillis();
+
+        playboyS1.print();
+
+        endTime = System.currentTimeMillis();
+
+        System.out.println("Printing of the section 1 took "
+                + (endTime - startTime) + " milliseconds");
+
+        startTime = System.currentTimeMillis();
+
+        playboyS1.print();
+
+        endTime = System.currentTimeMillis();
+
+        System.out.println("Printing again the section 1 took "
+                + (endTime - startTime) + " milliseconds");
     }
 }
