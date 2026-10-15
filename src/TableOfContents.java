@@ -1,3 +1,4 @@
+
 public class TableOfContents implements Element {
 
     private String something;
@@ -11,7 +12,12 @@ public class TableOfContents implements Element {
     }
 
     @Override
-    public void print() {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public void render() {
         System.out.println(something);
     }
 

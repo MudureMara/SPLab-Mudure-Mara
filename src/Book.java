@@ -1,7 +1,8 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book implements Element {
 
     private String title;
     private List<Element> content;
@@ -21,11 +22,32 @@ public class Book {
         authors.add(author);
     }
 
-    public void print() {
-        System.out.println("Book: " + title);
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
 
         for (Element element : content) {
-            element.print();
+            element.accept(visitor);
         }
+    }
+
+    @Override
+    public void render() {
+        System.out.println("Book: " + title);
+    }
+
+    @Override
+    public void add(Element element) {
+        content.add(element);
+    }
+
+    @Override
+    public void remove(Element element) {
+        content.remove(element);
+    }
+
+    @Override
+    public Element get(int index) {
+        return content.get(index);
     }
 }

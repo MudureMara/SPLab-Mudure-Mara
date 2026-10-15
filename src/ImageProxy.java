@@ -1,3 +1,4 @@
+
 public class ImageProxy implements Element {
 
     private String imageName;
@@ -9,13 +10,17 @@ public class ImageProxy implements Element {
     }
 
     @Override
-    public void print() {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 
+    @Override
+    public void render() {
         if (realImage == null) {
             realImage = new Image(imageName);
         }
 
-        realImage.print();
+        realImage.render();
     }
 
     @Override

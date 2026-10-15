@@ -1,3 +1,4 @@
+
 import java.util.concurrent.TimeUnit;
 
 public class Image implements Element {
@@ -10,12 +11,17 @@ public class Image implements Element {
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 
     @Override
-    public void print() {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public void render() {
         System.out.println("Image: " + imageName);
     }
 

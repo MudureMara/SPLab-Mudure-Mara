@@ -1,3 +1,4 @@
+
 public class Paragraph implements Element {
 
     private String text;
@@ -17,8 +18,12 @@ public class Paragraph implements Element {
     }
 
     @Override
-    public void print() {
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 
+    @Override
+    public void render() {
         if (textAlignment == null) {
             System.out.println(text);
         } else {

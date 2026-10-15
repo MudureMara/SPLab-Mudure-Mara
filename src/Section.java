@@ -12,12 +12,21 @@ public class Section implements Element {
     }
 
     @Override
-    public void print() {
-        System.out.println(title);
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
 
         for (Element element : children) {
-            element.print();
+            element.accept(visitor);
         }
+    }
+
+    @Override
+    public void render() {
+        System.out.println(title);
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     @Override
