@@ -1,8 +1,10 @@
+
 package ro.uvt.models;
 
 import jakarta.persistence.*;
 
 @Entity
+@jakarta.persistence.Table(name = "BOOK_TABLE")
 public class Table extends BaseElement {
 
     private String something;
